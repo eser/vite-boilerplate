@@ -3,11 +3,11 @@
 // }
 
 const getRoutes = function getRoutes() {
-  const routes = import.meta.glob("./**/index.page.jsx", { eager: true });
+  const routes = import.meta.glob("./**/index.page.[jt]s+(x|)", { eager: true });
 
   return Object.entries(routes)
     .map(([routeKey, route]) => {
-      const [, pathPlain] = routeKey.match(/\.\/(.*)\/index\.page\.jsx$/);
+      const [, pathPlain] = routeKey.match(/\.\/(.*)\/index\.page\.[jt]sx?$/);
 
       if (pathPlain === "shared") {
         return undefined;

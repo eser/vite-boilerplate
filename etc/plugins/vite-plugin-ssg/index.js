@@ -80,7 +80,7 @@ function validateUrls(urls) {
 
 function ssg(userOptions) {
   const options = {
-    match: /src\/(.*)\/index\.page\.jsx?$/,
+    match: /src\/(.*)\/index\.page\.[tj]sx?$/,
     ...userOptions,
   };
 

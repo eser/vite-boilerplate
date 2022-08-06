@@ -1,6 +1,6 @@
 import { Link, Route, Routes } from "react-router-dom";
 import { MantineProvider, Text } from "@mantine/core";
-import { getRoutes } from "./get-routes.js";
+import { getRoutes } from "./get-routes.ts";
 import { HelmetProvider } from "react-helmet-async";
 
 const routes = getRoutes();

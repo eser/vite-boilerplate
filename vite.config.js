@@ -9,7 +9,7 @@ export default defineConfig({
     mdx(),
     ssg({
       autoDiscoverUrls: [
-        /src\/(.*)\/index\.page\.jsx?$/,
+        /src\/(.*)\/index\.page\.[tj]sx?$/,
       ],
       urls: {
         "/index": { context: { deneme: 1 } },

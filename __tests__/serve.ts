@@ -28,7 +28,7 @@ export async function serve(): Promise<{ close(): Promise<void> }> {
       logLevel: "silent",
       build: {
         target: "esnext",
-        ssr: "src/entry-server.jsx",
+        ssr: "src/entry-server.tsx",
         outDir: "dist/server",
         rollupOptions: {
           output: {
