@@ -1,0 +1,19 @@
+# OS metadata
+.DS_Store
+Thumbs.db
+
+# Editor metadata
+.vscode/
+
+# npm
+node_modules/
+
+# API keys and secrets
+.env.local
+.env.*.local
+
+# Swap files
+*.swp
+
+# dist files
+dist/*
