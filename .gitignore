@@ -4,6 +4,8 @@ Thumbs.db
 
 # Editor metadata
 .vscode/
+!.vscode/extensions.json
+.idea/
 
 # npm
 node_modules/

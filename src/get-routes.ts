@@ -3,7 +3,9 @@
 // }
 
 const getRoutes = function getRoutes() {
-  const routes = import.meta.glob("./**/index.page.[jt]s+(x|)", { eager: true });
+  const routes = import.meta.glob("./**/index.page.[jt]s+(x|)", {
+    eager: true,
+  });
 
   return Object.entries(routes)
     .map(([routeKey, route]) => {
