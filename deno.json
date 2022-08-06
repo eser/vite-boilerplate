@@ -1,0 +1,45 @@
+{
+  "lint": {
+    "files": {
+      "include": [
+        "src/",
+        "etc/",
+        "__tests__/",
+        "mod.ts",
+        "*.md",
+        "*.json"
+      ],
+      "exclude": [
+        "node_modules/",
+        "dist/"
+      ]
+    },
+    "rules": {
+      "tags": [
+        "recommended"
+      ],
+      "include": [
+        "ban-untagged-todo"
+      ],
+      "exclude": [
+        "no-unused-vars"
+      ]
+    }
+  },
+  "fmt": {
+    "files": {
+      "include": [
+        "src/",
+        "etc/",
+        "__tests__/",
+        "mod.ts",
+        "*.md",
+        "*.json"
+      ],
+      "exclude": [
+        "node_modules/",
+        "dist/"
+      ]
+    }
+  }
+}

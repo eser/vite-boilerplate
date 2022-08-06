@@ -9,7 +9,7 @@ const App = function App() {
   return (
     <HelmetProvider>
       <MantineProvider withGlobalStyles withNormalizeCSS>
-        <Text>Welcome to vite-ssr-react!</Text>
+        <Text>Welcome to vite-boilerplate!</Text>
         <nav>
           <ul>
             {routes.map(({ name, path }) => {
