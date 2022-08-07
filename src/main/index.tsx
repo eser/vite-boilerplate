@@ -1,13 +1,33 @@
-import { Route, Routes } from "react-router-dom";
+import { Link, Route, Routes } from "react-router-dom";
 import { AppShell, Header, Navbar } from "@mantine/core";
 
-import { Nav } from "./nav.tsx";
 import { Home } from "./home/index.page.tsx";
 import { Env } from "./env/index.page.tsx";
 import { About } from "./about/index.page.tsx";
 import { AboutSub } from "./about/sub/index.page.tsx";
 
-const Main = function Main(props) {
+const Nav = function Nav() {
+  return (
+    <nav>
+      <ul>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/env/">Env</Link>
+        </li>
+        <li>
+          <Link to="/about/">About</Link>
+        </li>
+        <li>
+          <Link to="/about/sub/">About Sub</Link>
+        </li>
+      </ul>
+    </nav>
+  );
+};
+
+const Main = function Main() {
   return (
     <AppShell
       padding="md"
@@ -16,7 +36,7 @@ const Main = function Main(props) {
           <Nav />
         </Navbar>
       }
-      header={<Header height={60} p="xs">{/* Header content */}</Header>}
+      header={<Header height={60} p="xs">vite-boilerplate</Header>}
       styles={(theme) => ({
         main: {
           backgroundColor: theme.colorScheme === "dark"

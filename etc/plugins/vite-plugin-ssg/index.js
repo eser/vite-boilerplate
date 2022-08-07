@@ -29,13 +29,13 @@ function toAbsolutePath(p) {
   return path.join(process.cwd(), p);
 }
 
-function decorateTemplate(template, source) {
+function templateDecorator(template) {
   const templateContents = fs.readFileSync(
-    toAbsolutePath(template),
+    template,
     "utf-8",
   );
 
-  return templateContents.replace(`<!--app-html-->`, source);
+  return (source) => templateContents.replace(`<!--app-html-->`, source);
 }
 
 function findModule(bundle, outDir) {
@@ -87,19 +87,29 @@ function ssg(userOptions) {
   let isActive = false;
   let outDir = undefined;
   let outDirStatic = undefined;
+  let applyTemplate = undefined;
+  let bundle = undefined;
 
   return {
     name: "vite-plugin-ssr", // required, will show up in warnings and errors
 
     config(cfg, env) {
-      if (env?.command === "build" && env?.ssrBuild) {
+      if (env?.command === "build" && env?.ssrBuild && process.env.PRERENDER) {
         isActive = true;
         outDir = toAbsolutePath(cfg?.build?.outDir ?? "dist/server");
         outDirStatic = `${outDir}/static`;
+
+        applyTemplate = templateDecorator(
+          `${outDirStatic}/index.html`,
+        );
       }
     },
 
-    async writeBundle(bundleOptions, bundle) {
+    writeBundle(bundleOptions, bundleObject, isWrite) {
+      bundle = bundleObject;
+    },
+
+    async closeBundle() {
       if (!isActive) {
         return undefined;
       }
@@ -128,10 +138,7 @@ function ssg(userOptions) {
         fsExtra.ensureDirSync(`${outDirStatic}${dirname}`);
 
         const htmlContents = mod.render(source, context);
-        const fullHtml = decorateTemplate(
-          "dist/static/index.html",
-          htmlContents,
-        );
+        const fullHtml = applyTemplate(htmlContents);
 
         fs.writeFileSync(
           `${outDirStatic}${url}.html`,

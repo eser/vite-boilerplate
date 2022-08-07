@@ -12,7 +12,7 @@
     "build": "npm run build:client && npm run build:server",
     "build:client": "vite build --outDir dist/client",
     "build:server": "vite build --ssr src/entry-server.tsx --outDir dist/server",
-    "generate": "vite build --outDir dist/static && npm run build:server",
+    "generate": "vite build --outDir dist/server/static && cross-env PRERENDER=1 vite build --ssr src/entry-server.tsx --outDir dist/server",
     "test": "vitest",
     "test:ui": "vitest --ui",
     "coverage": "vitest run --coverage"

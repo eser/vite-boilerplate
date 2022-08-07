@@ -1,10 +1,12 @@
-import { render, screen, userEvent } from "../../test-utils.ts";
+import { render, screen } from "@testing-library/react";
 import { Home } from "./index.page.tsx";
 
-describe('Index', () => {
-  it('should be rendered', () => {
+describe("Index", () => {
+  it("should be rendered", () => {
     render(
-      <Home />
-    )
+      <Home />,
+    );
+
+    expect(screen.getByText("Home")).toBeInTheDocument();
   });
 });
