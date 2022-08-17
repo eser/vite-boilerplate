@@ -6,8 +6,6 @@ import { App } from "./app";
 ReactDOM.hydrateRoot(
   document.getElementById("app"),
   <BrowserRouter>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
+    <App />
   </BrowserRouter>,
 );

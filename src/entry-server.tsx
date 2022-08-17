@@ -6,9 +6,7 @@ import { App } from "./app";
 const render = function render(url, context) {
   return ReactDOMServer.renderToString(
     <StaticRouter location={url} context={context}>
-      <React.StrictMode>
-        <App />
-      </React.StrictMode>
+      <App />
     </StaticRouter>,
   );
 };
